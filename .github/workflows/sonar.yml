@@ -44,11 +44,11 @@ jobs:
 
       - name: Cobertura de simple_bk
         run: |
-          uv sync --locked --no-build --directory semana-02/ejercicio/simple_bk --group dev
-          ./semana-02/ejercicio/simple_bk/.venv/bin/python -m pytest \
-            semana-02/ejercicio/simple_bk/tests \
+          uv sync --locked --no-build --directory semana-02/sesion-3/simple_bk --group dev
+          ./semana-02/sesion-3/simple_bk/.venv/bin/python -m pytest \
+            semana-02/sesion-3/simple_bk/tests \
             -v \
-            --cov=semana-02/ejercicio/simple_bk \
+            --cov=semana-02/sesion-3/simple_bk \
             --cov-report=xml:coverage-simple-bk.xml \
             --cov-report=term-missing
           python3 - << 'PY'
@@ -58,7 +58,36 @@ jobs:
           # El XML de coverage.py deja el archivo como "main.py" y el directorio
           # del paquete en <source>. Sonar compara con la ruta del repo.
           informe = Path("coverage-simple-bk.xml")
-          prefijo = "semana-02/ejercicio/simple_bk/"
+          prefijo = "semana-02/sesion-3/simple_bk/"
+          arbol = ET.parse(informe)
+          raiz_xml = arbol.getroot()
+          fuentes = raiz_xml.find("sources")
+          for fuente in list(fuentes):
+              fuentes.remove(fuente)
+          nueva = ET.SubElement(fuentes, "source")
+          nueva.text = str(Path.cwd().resolve())
+          for clase in raiz_xml.findall(".//class"):
+              nombre = clase.get("filename")
+              if not nombre.startswith(prefijo):
+                  clase.set("filename", prefijo + nombre)
+          arbol.write(informe, encoding="unicode", xml_declaration=True)
+          PY
+
+      - name: Cobertura de simple_fastapi
+        run: |
+          uv run --locked --no-build --python 3.13 --project semana-01/sesion-2/simple_fastapi --with pytest --with pytest-cov \
+            pytest semana-01/sesion-2/simple_fastapi/tests \
+            -v \
+            --cov=semana-01/sesion-2/simple_fastapi \
+            --cov-report=xml:coverage-simple-fastapi.xml \
+            --cov-report=term-missing
+          python3 - << 'PY'
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+
+          # Igual que simple_bk: coverage.py deja "main.py" y el paquete en <source>.
+          informe = Path("coverage-simple-fastapi.xml")
+          prefijo = "semana-01/sesion-2/simple_fastapi/"
           arbol = ET.parse(informe)
           raiz_xml = arbol.getroot()
           fuentes = raiz_xml.find("sources")

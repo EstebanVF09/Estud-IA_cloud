@@ -83,3 +83,9 @@ La etiqueta dice qué pedimos. El digest dice qué bits se van a ejecutar.
 ## Reto de red
 
 La rama [`reto`](https://github.com/RafaelCampoTech/Estud-IA_cloud/tree/reto) es el mismo proyecto con el entorno roto a propósito. Esta carpeta en `main` es la solución. El enunciado está en esa rama, en `RETO.md`.
+
+## También en esta sesión
+
+- [simple_bk](simple_bk/README.md): API mínima. La clave se lee de `SECRET_KEY` y no viaja dentro de la imagen.
+- [demo_secretos](demo_secretos/README.md): laboratorio de capas. Borrar `.env` en una instrucción posterior no lo saca de la imagen.
+- [Presentación de las sesiones 3 y 4](../recursos/Session_3_y_4_nube.pptx.pdf).

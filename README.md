@@ -2,17 +2,33 @@
 
 Cinco semanas, dos encuentros sincrónicos de tres horas por semana, y 12 horas de trabajo asincrónico en Platzi. En total, 42 horas: 30 sincrónicas y 12 asincrónicas.
 
-Aquí no vas a copiar una solución. Vas a elegir un **proyecto propio**, pequeño pero real, y a mejorarlo cada semana con una idea nueva: repetirlo, validarlo, describirlo como código, actualizarlo y recuperarlo, protegerlo, observarlo y, al final, explicarlo.
+Aquí no vas a copiar una solución. Vas a elegir un **proyecto propio**, pequeño pero real, y a mejorarlo cada semana: primero la necesidad y las pruebas, después una ejecución que otra persona puede repetir, y en las tres semanas finales el camino de la petición, el clúster, Git como fuente de verdad y la infraestructura descrita en código.
 
 ## Ruta del curso
 
 | Semana | Encuentros | Tema central | Módulo asincrónico en Platzi |
 |---|---|---|---|
-| [1](semana-01/README.md) | 1 y 2 | Necesidad, alcance y pruebas de aceptación | M1 CI/CD y DevOps · M2 Contenedores |
-| [2](semana-02/README.md) | 3 y 4 | Contenedores e integración continua | M3 Despliegue en la nube |
-| [3](semana-03/README.md) | 5 y 6 | Infraestructura declarativa, actualización y reversión | M4 Redes avanzadas |
-| [4](semana-04/README.md) | 7 y 8 | Conectividad, acceso y telemetría | M5 Terraform avanzado |
-| [5](semana-05/README.md) | 9 y 10 | Auditoría, reproducibilidad y defensa | M6 Observabilidad y alertas |
+| [1](semana-01/README.md) | [1](semana-01/sesion-1/README.md) y [2](semana-01/sesion-2/README.md) | Necesidad, alcance y pruebas de aceptación | M1 CI/CD y DevOps · M2 Contenedores |
+| [2](semana-02/README.md) | [3](semana-02/sesion-3/README.md) y [4](semana-02/sesion-4/README.md) | Contenedores e integración continua | M3 Despliegue en la nube |
+| [3](semana-03/README.md) | [5](semana-03/sesion-5/README.md) y [6](semana-03/sesion-6/README.md) | Redes, cómputo y despliegue en AWS | M4 Redes avanzadas |
+| [4](semana-04/README.md) | [7](semana-04/sesion-7/README.md) y [8](semana-04/sesion-8/README.md) | Kubernetes y GitOps | Kubernetes |
+| [5](semana-05/README.md) | [9](semana-05/sesion-9/README.md) y [10](semana-05/sesion-10/README.md) | Terraform | Terraform |
+
+Las semanas 4 y 5 asumen que Platzi cubre Kubernetes y Terraform en esas semanas. Si el curso asincrónico trae otros temas, la demostración y el microtaller se ajustan para no repetirlos.
+
+## Carpetas
+
+Cada semana tiene una carpeta por sesión, con la numeración continua del curso, y `recursos/` para las presentaciones.
+
+| Semana | Sesiones | Presentaciones |
+|---|---|---|
+| [semana-01](semana-01/README.md) | [sesion-1](semana-01/sesion-1/README.md), [sesion-2](semana-01/sesion-2/README.md) | [recursos](semana-01/recursos/README.md) |
+| [semana-02](semana-02/README.md) | [sesion-3](semana-02/sesion-3/README.md), [sesion-4](semana-02/sesion-4/README.md) | [recursos](semana-02/recursos/README.md) |
+| [semana-03](semana-03/README.md) | [sesion-5](semana-03/sesion-5/README.md), [sesion-6](semana-03/sesion-6/README.md) | [recursos](semana-03/recursos/README.md) |
+| [semana-04](semana-04/README.md) | [sesion-7](semana-04/sesion-7/README.md), [sesion-8](semana-04/sesion-8/README.md) | [recursos](semana-04/recursos/README.md) |
+| [semana-05](semana-05/README.md) | [sesion-9](semana-05/sesion-9/README.md), [sesion-10](semana-05/sesion-10/README.md) | [recursos](semana-05/recursos/README.md) |
+
+Los conceptos de apoyo, fuera de las semanas, están en [conceptos previos](conceptos_previos/README.md).
 
 ## Cómo trabajamos
 

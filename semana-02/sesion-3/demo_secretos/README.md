@@ -31,11 +31,13 @@ jq --version
 
 ## 2. Descarga o clona el laboratorio
 
-Abre una terminal dentro del directorio del proyecto:
+Abre una terminal en la raíz del repositorio y entra al laboratorio:
 
 ```bash
-cd demo_secretos
+cd semana-02/sesion-3/demo_secretos
 ```
+
+Los comandos que siguen se ejecutan desde esa carpeta.
 
 ---
 

@@ -49,11 +49,17 @@ Además retomamos lo de la semana 1: ciclo de vida de imágenes, redes, volúmen
 ## Material de los encuentros 3 y 4
 
 - [Sesión 3 · Compose local](sesion-3/README.md): frontend, API y PostgreSQL con un comando, dos redes y un volumen.
+- [Sesión 3 · simple_bk](sesion-3/simple_bk/README.md): la clave ficticia entra por `SECRET_KEY` al arrancar. La imagen no copia un `.env`.
+- [Sesión 3 · demo de secretos](sesion-3/demo_secretos/README.md): el laboratorio borra `.env` en una capa posterior y el archivo sigue en la imagen.
 - [Sesión 4 · comparar tres imágenes](sesion-4/demo/README.md): la misma API en una etapa, en dos etapas y con caché de Actions.
 - [Sesión 4 · taller](sesion-4/taller/README.md): la imagen de una etapa, la hoja de OIDC y el plan B sin AWS.
+- [Sesión 4 · ejemplo multi-stage](sesion-4/ejemplo-multistage/README.md): una receta de Node con etapas de desarrollo, prueba, build y producción.
+- [Recursos](recursos/README.md): `Session_3_y_4_nube.pptx.pdf`, la presentación de las dos sesiones.
+
+El índice de la sesión 4, con el reto, la demo del modelo y los resultados archivados, está en [sesion-4](sesion-4/README.md).
 
 La rama `reto` es el punto de partida de la actividad de red. Lo que está en esta carpeta, en `main`, es la solución.
 
 ## Para llevar a la semana 3
 
-Guarda la versión de tu imagen, tus instrucciones y tu workflow con su estado real de promoción. Identifica **qué parte de tu entorno sigue configurándose a mano**: ahí entra la infraestructura como código.
+Guarda la versión de tu imagen, tus instrucciones y tu workflow con su estado real de promoción. En la semana 3 seguimos el camino de una petición: por dónde entra el tráfico, dónde corre esa imagen y cómo cambia su versión.

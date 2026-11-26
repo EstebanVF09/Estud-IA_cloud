@@ -64,6 +64,14 @@ Si no alcanzaste a verlos, no pasa nada. En los encuentros los usamos para pensa
 
 Sirven para conversar. No son entregas administrativas.
 
+## Material
+
+| Dónde | Qué hay |
+|---|---|
+| [Sesión 1](sesion-1/README.md) | Encuentro 1. Las diapositivas de la semana están en recursos. |
+| [Sesión 2](sesion-2/README.md) | Encuentro 2, con la API de ejemplo y sus pruebas. |
+| [Recursos](recursos/README.md) | `Semana_1_EstudIA.pptx.pdf` y `Sesion_2_semana_1.pptx.pdf`. |
+
 ## Para llevar a la semana 2
 
 Guarda tu brief, tu diagrama y tus criterios. Identifica qué necesitas para construir tu **primera ejecución reproducible**. En la semana 2 la imagen y la configuración serán el medio para sostener el recorrido que acordaste.

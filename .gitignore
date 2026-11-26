@@ -62,3 +62,4 @@ build/
 .coverage
 coverage.xml
 coverage-simple-bk.xml
+coverage-simple-fastapi.xml
