@@ -1,0 +1,41 @@
+services:
+  client:
+    image: nicolaka/netshoot
+    container_name: lab-client
+    command: sleep infinity
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    dns:
+      - 172.30.0.53
+    networks:
+      lab-network:
+        ipv4_address: 172.30.0.10
+
+  web:
+    build: .
+    image: lab-web:local
+    container_name: lab-web
+    command: python -m http.server 8080 --bind 0.0.0.0
+    cap_add:
+      - NET_ADMIN
+    networks:
+      lab-network:
+        ipv4_address: 172.30.0.20
+
+  dns:
+    image: coredns/coredns:1.11.3
+    container_name: lab-dns
+    command: -conf /etc/coredns/Corefile
+    volumes:
+      - ./dns:/etc/coredns:ro
+    networks:
+      lab-network:
+        ipv4_address: 172.30.0.53
+
+networks:
+  lab-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24

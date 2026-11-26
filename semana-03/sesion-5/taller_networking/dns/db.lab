@@ -1,0 +1,5 @@
+$ORIGIN lab.
+$TTL 30
+@       IN SOA  ns.lab. admin.lab. 2026112601 7200 3600 1209600 30
+        IN NS   ns.lab.
+web     IN A    172.30.0.20

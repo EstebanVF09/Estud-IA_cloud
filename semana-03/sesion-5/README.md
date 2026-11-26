@@ -16,4 +16,6 @@ En la planeación de la semana 3 esta clase es la Sesión 1. En el repositorio e
 
 `main.go` imprime `Hello, World!`. Es un arranque mínimo que ya estaba en esta carpeta. Los bloques de arriba son el temario de la sesión.
 
+El taller de diagnóstico con `tcpdump` está en [taller_networking](taller_networking/README.md). Los scripts sueltos de la sesión están en [scripts](scripts/README.md).
+
 La evidencia de la semana y el resto de los bloques están en el [README de la semana](../README.md). Las presentaciones, cuando existan, van en [recursos](../recursos/README.md).
