@@ -73,6 +73,35 @@ jobs:
           arbol.write(informe, encoding="unicode", xml_declaration=True)
           PY
 
+      - name: Cobertura de simple_fastapi
+        run: |
+          uv run --locked --python 3.13 --project semana-01/sesion-2/simple_fastapi --with pytest --with pytest-cov \
+            pytest semana-01/sesion-2/simple_fastapi/tests \
+            -v \
+            --cov=semana-01/sesion-2/simple_fastapi \
+            --cov-report=xml:coverage-simple-fastapi.xml \
+            --cov-report=term-missing
+          python3 - << 'PY'
+          import xml.etree.ElementTree as ET
+          from pathlib import Path
+
+          # Igual que simple_bk: coverage.py deja "main.py" y el paquete en <source>.
+          informe = Path("coverage-simple-fastapi.xml")
+          prefijo = "semana-01/sesion-2/simple_fastapi/"
+          arbol = ET.parse(informe)
+          raiz_xml = arbol.getroot()
+          fuentes = raiz_xml.find("sources")
+          for fuente in list(fuentes):
+              fuentes.remove(fuente)
+          nueva = ET.SubElement(fuentes, "source")
+          nueva.text = str(Path.cwd().resolve())
+          for clase in raiz_xml.findall(".//class"):
+              nombre = clase.get("filename")
+              if not nombre.startswith(prefijo):
+                  clase.set("filename", prefijo + nombre)
+          arbol.write(informe, encoding="unicode", xml_declaration=True)
+          PY
+
       - name: SonarQube Scan
         uses: SonarSource/sonarqube-scan-action@4d1dc0c91ee400dcf8a6dddf2f705ac36542e304 # v8.4.0
         env:

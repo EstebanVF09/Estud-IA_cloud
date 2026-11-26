@@ -10,4 +10,4 @@ Desde esta carpeta:
 bash ejercutar_docker_example.sh
 ```
 
-El script construye el target `production` con `-f dockerfile.example` y arranca el contenedor en el puerto 3000. Sin un proyecto Node en el contexto, el build se detiene al copiar `package.json`.
+El script construye el target `production` con `-f dockerfile.example` y arranca el contenedor en el puerto 3000. Sin un proyecto Node en el contexto, el build se detiene al copiar `package.json` y `package-lock.json`. La etapa de desarrollo instala con `npm ci --ignore-scripts`: el lock fija las versiones y los scripts de los paquetes no se ejecutan.

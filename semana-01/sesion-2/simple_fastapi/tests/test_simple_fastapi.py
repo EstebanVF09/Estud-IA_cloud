@@ -1,7 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
 
-from function import dummy_function
+from function import dummy_function, dummy_function_2
 from main import app
 
 client = TestClient(app)
@@ -48,3 +48,16 @@ def test_dummy_function_explicit_dummy_returns_greeting():
 def test_dummy_function_other_value_raises():
     with pytest.raises(ValueError, match="a is not Dummy"):
         dummy_function("other")
+
+
+def test_dummy_function_2_default_returns_greeting():
+    assert dummy_function_2() == "Hello from dummy_function_2!"
+
+
+def test_dummy_function_2_explicit_dummy_returns_greeting():
+    assert dummy_function_2("Dummy") == "Hello from dummy_function_2!"
+
+
+def test_dummy_function_2_other_value_raises():
+    with pytest.raises(ValueError, match="a is not Dummy"):
+        dummy_function_2("other")
