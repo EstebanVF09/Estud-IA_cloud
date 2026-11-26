@@ -75,7 +75,7 @@ jobs:
 
       - name: Cobertura de simple_fastapi
         run: |
-          uv run --locked --python 3.13 --project semana-01/sesion-2/simple_fastapi --with pytest --with pytest-cov \
+          uv run --locked --no-build --python 3.13 --project semana-01/sesion-2/simple_fastapi --with pytest --with pytest-cov \
             pytest semana-01/sesion-2/simple_fastapi/tests \
             -v \
             --cov=semana-01/sesion-2/simple_fastapi \
