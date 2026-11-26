@@ -3,11 +3,11 @@ name: simple-bk
 on:
   push:
     paths:
-      - "semana-02/ejercicio/simple_bk/**"
+      - "semana-02/sesion-3/simple_bk/**"
       - ".github/workflows/simple-bk.yml"
   pull_request:
     paths:
-      - "semana-02/ejercicio/simple_bk/**"
+      - "semana-02/sesion-3/simple_bk/**"
       - ".github/workflows/simple-bk.yml"
 
 permissions:
@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: semana-02/ejercicio/simple_bk
+        working-directory: semana-02/sesion-3/simple_bk
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

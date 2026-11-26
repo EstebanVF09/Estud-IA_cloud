@@ -1,56 +1,74 @@
-# Semana 5 · Auditoría, reproducibilidad y defensa
+# Semana 5 · Terraform
 
-Esta semana no se agregan funciones nuevas. Se consolida lo que ya construiste, se revisa desde cero y se explica con evidencia.
+Esta semana describe toda la infraestructura en código. Al terminar, puedes leer un plan, explicar qué guarda el estado y trabajar con otra persona sin pisar su entorno.
+
+La pregunta de la semana: ¿cómo se describe la infraestructura completa y cómo se revisa y revierte?
+
+En la planeación, las dos clases se llaman Sesión 1 y Sesión 2. En el repositorio son [sesion-9](sesion-9/README.md) y [sesion-10](sesion-10/README.md).
 
 ## Mapa de la semana
 
-| Encuentro | Título | Qué te llevas |
-|---|---|---|
-| 9 | Auditoría, reproducibilidad y portafolio | Una versión candidata, un README utilizable y una corrección crítica incorporada |
-| 10 | Demostración, defensa y proyección operativa | Una explicación individual con evidencia y una mejora priorizada a partir de la devolución |
+| Encuentro | Carpeta | Título | Qué te llevas |
+|---|---|---|---|
+| 9 | [sesion-9](sesion-9/README.md) | Fundamentos | Un plan leído, sin `apply` contra una cuenta real |
+| 10 | [sesion-10](sesion-10/README.md) | Terraform en equipo | El mismo módulo en dos entornos, con su plan y su reversión |
 
 ## Antes de la semana: lo asincrónico en Platzi
 
-**M6 · Observabilidad avanzada y alertas**
-- OpenTelemetry: trazas, métricas y logs
-- Distributed tracing con AWS X-Ray y Google Cloud Trace
-- Gestión centralizada de logs: OpenSearch, Splunk free o Grafana Loki
-- Alertas inteligentes y detección de anomalías en CloudWatch y Cloud Monitoring
-- Runbooks y playbooks
+Esta semana asume que Platzi cubre Terraform. Si el curso trae otros temas, la demostración y el microtaller se ajustan para no repetirlos.
 
-En los encuentros de esta semana retomamos **todos los módulos**: CI/CD (M1), contenedores (M2), despliegue y reversión (M3), conectividad (M4) y Terraform (M5). Cada uno aparece como una pregunta para tu proyecto, no como un tema nuevo.
+## Sesión 9 · Fundamentos
 
-## Qué vas a aprender
+| Bloque | Min | Contenido |
+|---|---|---|
+| Apertura | 5 | Qué se describe y qué no: el código no garantiza el estado real |
+| Clase 1: modelo declarativo | 15 | Plan, apply y ciclo de vida de un recurso: crear, modificar y reemplazar |
+| Clase 2: HCL | 20 | Providers, resources, variables, outputs y data sources |
+| Demostración | 20 | Escribir, validar y leer un plan de la VPC de la semana 3 |
+| Microtaller | 25 | Un módulo de subred pública y privada con `terraform plan`, sin `apply` |
+| Receso | 15 | Descanso |
+| Estado | 20 | Qué guarda, por qué es sensible y la diferencia entre estado local y remoto |
+| Bloqueo del estado | 15 | Por qué dos personas no deben aplicar a la vez |
+| Clínica de errores | 15 | Reemplazos inesperados, *drift* y recursos fuera de Terraform |
+| Mentoría | 20 | Atención individual al proyecto de cada alumno |
+| Síntesis | 10 | Qué revisar antes de cada `apply` |
 
-**Encuentro 9 · Auditoría y portafolio**
-- Revisar tu proyecto desde una entrada limpia: arranque, imagen, CI, infraestructura, configuración, pruebas, reversión y telemetría.
-- Seguir una afirmación de confiabilidad desde el README hasta una prueba.
-- Detectar si describes una configuración distinta de la que ejecutaste.
-- Armar un README que permita a otra persona reconstruir una ejecución.
-- Preparar una defensa breve: necesidad, flujo, falla y recuperación, con una limitación y una decisión sobre recursos.
-- Si usaste IA, indicar qué sugerencia incorporaste y cómo comprobaste su efecto.
+Las versiones recientes de Terraform permiten bloqueo nativo del estado en S3 con `use_lockfile`. DynamoDB era el mecanismo anterior. Antes de la clase, confirmen la versión que usará el grupo.
 
-**Encuentro 10 · Demostración y defensa**
-- Explicar tu automatización y tu operación con tus propias palabras.
-- Mostrar una falla detectada y la acción que permite detener o recuperar.
-- Relacionar cada afirmación con una evidencia.
-- Declarar con honestidad qué queda pendiente o sin comprobar, y responder una objeción sin inventar una garantía.
-- Revisar el trabajo de otra persona: un logro observable, una condición que necesita revisión y una comprobación posible.
+Regla de la clase: no se ejecuta `apply` contra una cuenta real. El plan se lee y se explica. Si hay cuenta de práctica, se aplica en un entorno aislado y declarado.
 
-## Evidencias flexibles
+## Sesión 10 · Terraform en equipo
 
-- Una versión candidata y un README utilizable.
-- Una prueba reproducida, o el alcance de la revisión declarado.
-- Una corrección crítica incorporada y una defensa ensayada.
-- Una explicación individual con alcance real.
-- Una mejora priorizada a partir de la devolución.
+| Bloque | Min | Contenido |
+|---|---|---|
+| Apertura | 5 | Qué cambia cuando trabajan dos personas sobre el mismo estado |
+| Clase 1: módulos | 20 | Estructura, entradas, salidas y versionado de un módulo |
+| Clase 2: entornos | 20 | Directorios por entorno frente a workspaces; por qué los workspaces no aíslan permisos |
+| Demostración | 25 | Pipeline: `plan` en cada pull request, comentario con el plan y `apply` solo tras aprobación |
+| Microtaller | 25 | Un mismo módulo en desarrollo y producción, con variables distintas, y su plan para cada entorno |
+| Receso | 15 | Descanso |
+| Drift | 20 | Detectar cambios manuales con `plan`; cuándo importar un recurso y cuándo reconstruirlo |
+| Reversión | 15 | Revertir un commit y su plan; qué datos y configuración no vuelven |
+| Mentoría | 20 | Atención individual al proyecto de cada alumno |
+| Síntesis | 15 | Cómo se revisa, se aprueba y se revierte un cambio de infraestructura |
 
-## Cómo será la defensa
+## Evidencia de la semana
 
-Somos unas 35 personas, así que no todos exponen largo en plenaria. Trabajamos con muestras representativas y revisiones entre pares. Cada persona tiene una oportunidad de explicar y recibir preguntas. Quedará acordada una alternativa para dificultades técnicas que conserve tu evidencia individual.
+Un módulo reutilizado en dos entornos, un plan revisado en un pull request, una detección de *drift* y una reversión descrita con su alcance.
 
-## Preguntas para la reflexión final
+## Conexión entre las semanas 3, 4 y 5
 
-- ¿Qué decisión cambió después de una prueba?
-- ¿Qué dificultad puedes investigar mejor ahora que al empezar?
-- ¿Qué profundizarías a continuación: observación o recuperación?
+| Concepto | Semana 3 | Semana 4 | Semana 5 |
+|---|---|---|---|
+| Versión identificable | Etiqueta y digest de la imagen | Imagen fijada en el manifiesto | Variable de versión en el módulo |
+| Salud | Endpoint `/health` y health checks | Readiness y liveness | Recursos de alarma definidos en código |
+| Reversión | Volver a la versión anterior del despliegue | `git revert` y reconciliación | Revertir el commit y aplicar el plan |
+| Lo que no vuelve | Datos y configuración | Secretos y datos del clúster | Estado y recursos con datos |
+
+## Material
+
+| Dónde | Qué hay |
+|---|---|
+| [sesion-9](sesion-9/README.md) | Bloques de fundamentos. Plan, sin `apply` en una cuenta real. |
+| [sesion-10](sesion-10/README.md) | Bloques de Terraform en equipo. |
+| [recursos](recursos/README.md) | Presentaciones de la semana. Todavía no hay archivos. |

@@ -1,58 +1,70 @@
-# Semana 3 · Infraestructura declarativa, actualización y reversión
+# Semana 3 · Redes, cómputo y despliegue en AWS
 
-Esta semana aprendes a describir tu servicio como código, a actualizarlo con confianza y a volver atrás cuando algo sale mal.
+Esta semana responde una pregunta: ¿por dónde llega el tráfico, dónde corre la aplicación y cómo cambia su versión? Al terminar, puedes explicar el camino de una petición, nombrar dónde corre el servicio y describir un cambio con su criterio de parada y su reversión.
+
+En la planeación, las dos clases se llaman Sesión 1 y Sesión 2. En el repositorio son [sesion-5](sesion-5/README.md) y [sesion-6](sesion-6/README.md), para seguir la numeración continua del curso. El guion detallado vive fuera de este repositorio, en `sesion1_guion_clase_v2.md`. Aquí están los bloques, la evidencia y las notas.
 
 ## Mapa de la semana
 
-| Encuentro | Título | Qué te llevas |
-|---|---|---|
-| 5 | Infraestructura declarativa y manejo de entornos | Un componente descrito como código, con un plan o una validación interpretados |
-| 6 | Actualización, salud y reversión | Una versión estable y otra defectuosa, y la reversión ensayada |
+| Encuentro | Carpeta | Título | Qué te llevas |
+|---|---|---|---|
+| 5 | [sesion-5](sesion-5/README.md) | Networking | El camino de una petición, de la red al borde |
+| 6 | [sesion-6](sesion-6/README.md) | Cómputo, despliegue e introducción a IaC | Una estrategia de despliegue con parada y reversión |
 
 ## Antes de la semana: lo asincrónico en Platzi
 
-**M4 · Redes avanzadas y conectividad**
-- VPC peering y Transit Gateway (AWS), Cloud Router (GCP)
-- DNS con Route 53 y Cloud DNS: routing por latencia y failover
-- WAF: reglas gestionadas y personalizadas contra OWASP Top 10
-- Private Link y Private Service Connect
-- Network Load Balancer frente a Application Load Balancer
+**M4 · Redes avanzadas y conectividad** acompaña esta semana: VPC, DNS, WAF y balanceadores. En el encuentro usamos ese vocabulario para seguir una petición.
 
-También retomamos el despliegue de la semana 2 (M3) y Kubernetes básico (M2) si tu proyecto lo usa. El Encuentro 5 anticipa el módulo M5 de Terraform, que verás en Platzi la semana siguiente.
+## Sesión 5 · Networking
 
-## Qué vas a aprender
+| Bloque | Min | Contenido |
+|---|---|---|
+| Apertura | 5 | Qué camino recorre una petición |
+| Fundamentos de red | 45 | Networking, IP, IPv4 y IPv6, CIDR, puertos TCP y UDP, DNS, TLS, VPN |
+| Redes en la nube | 40 | VPC, subredes, tablas de rutas, Internet Gateway, NAT, balanceadores, endpoints, peering y Transit Gateway |
+| Pricing de la red | 10 | Cobros por puerta, por datos y por salida, en AWS, GCP y Azure |
+| Seguridad, edge y observación | 45 | Principios de seguridad, security groups y NACL, WAF, Route 53 frente a Cloudflare, flow logs, herramientas de diagnóstico |
+| Receso | 15 | Descanso |
+| Demostración | 20 | Seguir una petición de punta a punta con un fallo sembrado |
 
-**Encuentro 5 · Infraestructura declarativa**
-- Leer un módulo: entradas, salidas y estructura.
-- Usar formato y validación, y saber **qué no comprueban** sobre el entorno real.
-- Leer un plan y distinguir crear, modificar y reemplazar.
-- Entender qué es el **estado**, cómo relaciona la configuración con los recursos y por qué necesita control de acceso.
-- Comparar mecanismos de separación de entornos (workspaces, carpetas) y por qué no equivalen, por sí solos, a aislamiento de permisos.
-- Reconocer una divergencia entre lo descrito y lo que existe.
+## Sesión 6 · Cómputo, despliegue e introducción a IaC
 
-**Encuentro 6 · Actualización, salud y reversión**
-- Publicar una versión con una falla controlada y leer la comprobación de salud.
-- Decidir qué condición detiene el avance de una actualización.
-- Recuperar la versión anterior y repetir la operación de usuario para verificarla.
-- Comparar rolling, blue-green y canary según las condiciones del servicio.
-- Si usas Kubernetes: distinguir *readiness* de *liveness* y entender qué pregunta responde cada sonda.
-- Identificar la versión activa con una referencia estable, no con una etiqueta que cambia.
+| Bloque | Min | Contenido |
+|---|---|---|
+| Apertura | 5 | Qué cambió desde la sesión 5 |
+| Microtaller | 20 | VPC, subredes públicas y privadas, instancias EC2 en AWS Emulator |
+| Instancias EC2 | 8 | Nombre de una instancia, familias y ejemplos de procesos |
+| Demostración | 15 | Diagnóstico de una instancia que no responde |
+| Receso | 15 | Descanso |
+| Operación de cambios | 105 | Ciclo de vida, costos, arranque en frío, permisos, acceso seguro, estrategias, criterios de parada, reversión, datos, configuración |
+| Introducción a IaC | 5 | Declarativa frente a imperativa; el archivo como fuente de verdad |
+| Síntesis | 12 | Tres preguntas sobre el caso de cada alumno |
 
-## Evidencias flexibles
+## Evidencia de la semana
 
-- Un componente de infraestructura como código con entradas y salidas comprensibles.
-- Una validación o un plan interpretados, con el alcance declarado.
-- Cómo controlas el estado y qué diferencia a tus entornos.
-- Versiones identificables y una prueba de salud.
-- Un cambio y una reversión ejecutados, o una simulación declarada.
-- Las dependencias que limitan la recuperación (por ejemplo, datos incompatibles con la versión anterior).
+Versión identificable, red explicada con su camino, una estrategia de despliegue con su criterio de parada y su reversión.
 
-## Ojo con estas ideas
+## Notas
 
-- Una validación correcta no significa que la infraestructura exista.
-- Revertir un contenedor no garantiza revertir toda la solución.
-- Una sonda mal diseñada puede ocultar una dependencia o provocar reinicios.
+La mentoría de 20 minutos está en las semanas 4 y 5. En esta semana quedó fuera por tiempo. Si se mueve aquí, se acorta la síntesis o el receso. El receso no se toca.
+
+## Cómo se conecta con lo que sigue
+
+| Concepto | Esta semana | Semana 4 | Semana 5 |
+|---|---|---|---|
+| Versión identificable | Etiqueta y digest de la imagen | Imagen fijada en el manifiesto | Variable de versión en el módulo |
+| Salud | Endpoint `/health` y health checks | Readiness y liveness | Recursos de alarma definidos en código |
+| Reversión | Volver a la versión anterior del despliegue | `git revert` y reconciliación | Revertir el commit y aplicar el plan |
+| Lo que no vuelve | Datos y configuración | Secretos y datos del clúster | Estado y recursos con datos |
 
 ## Para llevar a la semana 4
 
-Guarda tu configuración, tu registro de validación o plan, y tus versiones con la evidencia del ensayo. Señala **una dependencia de red o de acceso** que podría impedirte distinguir un fallo de versión de un fallo de conexión.
+Guarda la versión, el camino de la red y la estrategia con su parada y su reversión. La semana 4 deja las instancias y pasa al clúster.
+
+## Material
+
+| Dónde | Qué hay |
+|---|---|
+| [sesion-5](sesion-5/README.md) | Bloques de networking. `main.go` es un arranque mínimo que ya estaba en la carpeta. |
+| [sesion-6](sesion-6/README.md) | Bloques de cómputo, despliegue e introducción a IaC. |
+| [recursos](recursos/README.md) | Presentaciones de la semana. Todavía no hay archivos. |
