@@ -1,0 +1,17 @@
+# Recetas de los scripts de esta carpeta. Ejecútalas desde aquí.
+
+set shell := ["bash", "-euo", "pipefail", "-c"]
+
+scripts := justfile_directory()
+
+# Ejecuta 1_ip.py: una dirección IPv4.
+ip:
+    python3 {{scripts}}/1_ip.py
+
+# Ejecuta 2_ip_v6.py: una dirección IPv6.
+ip-v6:
+    python3 {{scripts}}/2_ip_v6.py
+
+# Ejecuta 3_ip_cidr.py: una red y sus subredes.
+ip-cidr:
+    python3 {{scripts}}/3_ip_cidr.py
